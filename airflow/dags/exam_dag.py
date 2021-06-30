@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 pg_uri_param = Variable.get("pg_uri_authorization", deserialize_json=True)
 pg_sql_param = Variable.get("pg_sql_param", deserialize_json=True)
 gcloud_param = Variable.get("gcloud_param", deserialize_json=True)
+service_credentials = Variable.get("service_credentials", deserialize_json=True)
 POSTGRES_DB_URI = "postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}".format(
     pg_user=pg_uri_param["username"],
     pg_pass=pg_uri_param["password"],
@@ -14,6 +15,8 @@ POSTGRES_DB_URI = "postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}"
     pg_port=pg_uri_param["port"],
     pg_db=pg_uri_param["dbname"],
 )
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_credentials["path_to_keys"]
 
 def export_raw_data(table,POSTGRES_DB_URI,pg_sql_param,gcloud_param,**context):
     from sqlalchemy import create_engine
