@@ -70,6 +70,6 @@ with DAG(
     tags=['exam'],
 ) as dag:
     for table in pg_sql_param["table_list"]:
-        t1 = PythonVirtualenvOperator(task_id='extract_and_upload_' + table,python_callable=export_raw_data,op_args=[table,POSTGRES_DB_URI,pg_sql_param,gcloud_param],provide_context=True,requirements=["SQLAlchemy","pandas","google-cloud-storage","psycopg2-binary"],system_site_packages=False)
-        t2 = PythonVirtualenvOperator(task_id='transform_to_bq_'+ table,python_callable=import_to_bq,op_args=[table,pg_sql_param,gcloud_param],provide_context=True,requirements=["SQLAlchemy","pandas","google-cloud-storage","google-cloud-bigquery","fsspec","gcsfs"],system_site_packages=False)
+        t1 = PythonVirtualenvOperator(task_id='extract_and_upload_' + table,python_callable=export_raw_data,op_args=[table,POSTGRES_DB_URI,pg_sql_param,gcloud_param],provide_context=True,requirements=["SQLAlchemy==1.4.20","pandas==1.2.5","google-cloud-storage==1.39.0","psycopg2-binary==2.9.1"],system_site_packages=False)
+        t2 = PythonVirtualenvOperator(task_id='transform_to_bq_'+ table,python_callable=import_to_bq,op_args=[table,pg_sql_param,gcloud_param],provide_context=True,requirements=["SQLAlchemy==1.4.20","pandas==1.2.5","google-cloud-storage==1.39.0","google-cloud-bigquery==2.20.0","fsspec==2021.6.1","gcsfs==2021.6.1"],system_site_packages=False)
         t1 >> t2
