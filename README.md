@@ -56,4 +56,4 @@ gcloud_param = { \
 
 # How to work with jupyter notebook on Dataproc
 follow below link and go to GCS folder
-https://niumdztfee5tvgajfegofzg6z4-dot-us-central1.dataproc.googleusercontent.com/gateway/default/jupyter/tree?
+https://3mfmvn57xqzw5hexzwivavjgga-dot-us-central1.dataproc.googleusercontent.com/gateway/default/jupyter/tree?
