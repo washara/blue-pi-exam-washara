@@ -50,6 +50,7 @@ def import_to_bq(table,pg_sql_param,gcloud_param,**context):
     df = read_csv(file_path)
     if table in pg_sql_param["table_to_transform"]:
         for col_name,new_col in pg_sql_param["table_to_transform"][table].items():
+            df[col_name] = df[col_name].astype("str")
             df[new_col["new_col_name"]] = df[col_name].map(new_col["mapping_value"])
             new_df = df.drop(columns=[col_name])
     else:
