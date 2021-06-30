@@ -69,7 +69,7 @@ with DAG(
     'exam-bluepi-washara',
     default_args=default_args,
     description='Dag for bluepi-exam',
-    schedule_interval=timedelta(hours=1),
+    schedule_interval="0 * * * *",
     start_date=datetime(2021, 6, 30),
     catchup=False,
     tags=['exam'],
