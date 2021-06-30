@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator,PythonVirtualenvOperator
 from airflow.models import Variable
 from datetime import datetime, timedelta
+import os
 
 #get variables
 pg_uri_param = Variable.get("pg_uri_authorization", deserialize_json=True)
