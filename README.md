@@ -40,7 +40,7 @@ pg_sql_param = {
 }
 
 gcloud_param = { \
-    "credentials": "path/to/servicekeys"
+    "credentials": "path/to/servicekeys", \
     "storage": { 
         "bucket": "exam-bluepi-bucket-washara", 
         "storage_path": "raw_data" 
