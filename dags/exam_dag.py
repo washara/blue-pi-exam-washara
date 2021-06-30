@@ -4,6 +4,10 @@ from airflow.operators.python_operator import PythonOperator,PythonVirtualenvOpe
 from airflow.models import Variable
 from datetime import datetime, timedelta
 
+#for local used only and don't forget to add json keys to service keys path
+#import os
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gcloud_param["credential"]
+
 from pipeline.services.extract_raw import extract_and_load
 from pipeline.services.transform_and_load import import_to_bq
 from pipeline.variable.parameter import pg_sql_param,gcloud_param,DB_URI
